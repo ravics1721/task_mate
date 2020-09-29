@@ -79,11 +79,17 @@ class AddNoteWidget extends StatelessWidget {
             RaisedButton.icon(
               onPressed: () {
                 //Todo: do that
-                NoteModel newNote = NoteModel(
-                    name: newNoteTitle, description: newNoteDescription);
-                noteBox.add(newNote);
-                print(noteBox.getAt(noteBox.length - 1).name);
-                Navigator.pop(context);
+                if(newNoteTitle == '' && newNoteDescription == ''){
+                  return print("-1");
+                } else {
+                  NoteModel newNote = NoteModel(
+                      name: newNoteTitle, description: newNoteDescription);
+                  noteBox.add(newNote);
+                  print(noteBox
+                      .getAt(noteBox.length - 1)
+                      .name);
+                  Navigator.pop(context);
+                }
               },
               label: Text(
                 'Note',
@@ -100,21 +106,6 @@ class AddNoteWidget extends StatelessWidget {
               ),
               padding: EdgeInsets.all(10.0),
             ),
-//            RaisedButton(
-//              onPressed: () {
-//                print('hello');
-//              },
-//              child: Text(
-//                'Add ',
-//                style: TextStyle(
-//                  color: Colors.white,
-//                  fontSize: 30.0,
-//                ),
-//              ),
-//              padding: EdgeInsets.all(10.0),
-//              color: kPrimaryColor,
-//              elevation: 5,
-//            ),
           ],
         ),
       ),

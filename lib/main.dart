@@ -1,6 +1,5 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:task_mate/models/data_model.dart';
 import 'utilities/constants.dart';
 import 'screens/home.dart';

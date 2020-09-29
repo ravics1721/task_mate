@@ -4,15 +4,10 @@ import 'package:hive/hive.dart';
 import 'package:task_mate/utilities/constants.dart';
 import 'package:task_mate/models/data_model.dart';
 
-class AddTaskWidget extends StatefulWidget {
-  @override
-  _AddTaskWidgetState createState() => _AddTaskWidgetState();
-}
-
-class _AddTaskWidgetState extends State<AddTaskWidget> {
-  var taskBox = Hive.box<TaskModel>('tasks');
+class AddTaskWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    var taskBox = Hive.box<TaskModel>('tasks');
     String newTaskTitle;
     String newTaskDescription;
     return Container(
@@ -81,12 +76,18 @@ class _AddTaskWidgetState extends State<AddTaskWidget> {
               onPressed: () {
                 //todo: code
 
-                TaskModel newTask =
-                    TaskModel(title: newTaskTitle, details: newTaskDescription);
-                //await taskBox.add(newTask);
-                taskBox.add(newTask);
-                print('All task:  ${taskBox.getAt(taskBox.length - 1).title} ');
-                Navigator.pop(context);
+                if(newTaskTitle == '' && newTaskDescription == '') {
+                  return print("-1");
+                } else {
+                  TaskModel newTask =
+                  TaskModel(title: newTaskTitle, details: newTaskDescription);
+                  //await taskBox.add(newTask);
+                  taskBox.add(newTask);
+                  print('All task:  ${taskBox
+                      .getAt(taskBox.length - 1)
+                      .title} ');
+                  Navigator.pop(context);
+                }
               },
               label: Text(
                 'add',
@@ -103,21 +104,6 @@ class _AddTaskWidgetState extends State<AddTaskWidget> {
               ),
               padding: EdgeInsets.all(10.0),
             ),
-//            RaisedButton(
-//              onPressed: () {
-//                print('hello');
-//              },
-//              child: Text(
-//                'Add ',
-//                style: TextStyle(
-//                  color: Colors.white,
-//                  fontSize: 30.0,
-//                ),
-//              ),
-//              padding: EdgeInsets.all(10.0),
-//              color: kPrimaryColor,
-//              elevation: 5,
-//            ),
           ],
         ),
       ),

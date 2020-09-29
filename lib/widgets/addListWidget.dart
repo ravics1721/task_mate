@@ -55,9 +55,13 @@ class AddListWidget extends StatelessWidget {
             RaisedButton.icon(
               onPressed: () {
                 //Todo: do that
+                if(newListItem == ''){
+                  return print('-1');
+                } else {
                   ListModel newItem = ListModel(itemName: newListItem);
                   listBox.add(newItem);
-                Navigator.pop(context);
+                  Navigator.pop(context);
+                }
               },
               label: Text('add',
                 style: TextStyle(
