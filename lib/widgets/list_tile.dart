@@ -16,7 +16,7 @@ class ListTileWidget extends StatelessWidget {
     return ListTile(
       onLongPress: longPressCallback,
       title: Text(
-        '${itemName}',
+        itemName,
         style: TextStyle(
           color: isDone ? kDisableColor : kPrimaryColor,
           decoration: isDone ? TextDecoration.lineThrough : null,
